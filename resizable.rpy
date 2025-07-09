@@ -5,7 +5,7 @@ Args:
     size (int, int): Initial size of the Drag
     min_size (int, int): Minimal size of the Drag
 
-Example:
+Usage example:
     screen example():
         use resizable(resize_padding=5, pos=(12, 5), size=(100, 120)):
             text "Hello world!"
@@ -25,7 +25,7 @@ screen resizable(resize_padding=20, pos=(0, 0), size=(200, 150), min_size=(50, 5
                 self.drag_y = None
                 self.drag_dir = None
 
-            # A callback (or list of callbacks) that is called when the mouse is pressed down on the drag.
+            # A function that is called when the mouse is pressed down on the Drag.
             def handle_activated(self, drags):
                 cursor_pos_x, cursor_pos_y = renpy.get_mouse_pos()
                 d = drags[0]
@@ -133,10 +133,12 @@ screen resizable(resize_padding=20, pos=(0, 0), size=(200, 150), min_size=(50, 5
         dragging drag_controller.handle_dragging
         dragged drag_controller.handle_dragged
 
+        # This frame is for visualization of the resize_padding and can be removed 
         frame:
             background "#fff"
             padding (drag_controller.resize_padding, drag_controller.resize_padding)
 
+            # This frame can be also be removed, it's here only because it's very likely you will want to add some sort of background
             frame:
                 viewport:
                     transclude
